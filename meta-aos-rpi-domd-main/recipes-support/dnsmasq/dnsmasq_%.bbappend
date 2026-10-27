@@ -1,5 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+S = "${UNPACKDIR}"
+
 SRC_URI += "file://dnsmasq.conf.in"
 FILES:${PN} += "/var/aos/dns/* /etc/aos/addnhosts"
 
@@ -35,7 +37,7 @@ do_configure:append() {
     sed -e "s|@LISTEN_IP@|${AOS_DNS_IP}|" \
         -e "s|@ADDNHOSTS_PATH@|/var/aos/dns|" \
         -e "s|@PERSISTENT_ADDNHOSTS_PATH@|/etc/aos|" \
-        ${WORKDIR}/dnsmasq.conf.in > ${WORKDIR}/dnsmasq.conf
+        ${UNPACKDIR}/dnsmasq.conf.in > ${UNPACKDIR}/dnsmasq.conf
 }
 
 do_install:append() {
@@ -48,7 +50,7 @@ do_install:append() {
 
     install -d ${D}/var/aos/dns
     install -d ${D}/etc/aos
-    install -m 0644 ${WORKDIR}/dnsmasq.conf ${D}/var/aos/dns/dnsmasq.conf
+    install -m 0644 ${UNPACKDIR}/dnsmasq.conf ${D}/var/aos/dns/dnsmasq.conf
 
     touch ${D}/var/aos/dns/addnhosts
     touch ${D}/etc/aos/addnhosts

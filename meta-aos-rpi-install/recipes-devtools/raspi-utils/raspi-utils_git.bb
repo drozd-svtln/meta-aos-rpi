@@ -10,7 +10,7 @@ SRC_URI = "git://github.com/raspberrypi/utils;protocol=https;branch=master"
 
 SRCREV = "b9c63214c535d7df2b0fa6743b7b3e508363c25a"
 
-S = "${WORKDIR}/git"
+S = "${UNPACKDIR}/git"
 
 INSANE_SKIP:${PN} += "installed-vs-shipped"
 

@@ -6,10 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7ca
 
 SRC_URI = "file://install_script.sh"
 
-S = "${WORKDIR}"
+S = "${UNPACKDIR}"
 
 do_install() {
-        install -m 0755 ${WORKDIR}/install_script.sh ${D}/init
+        install -m 0755 ${UNPACKDIR}/install_script.sh ${D}/init
 
         # Create device nodes expected by some kernels in initramfs
         # before even executing /init.

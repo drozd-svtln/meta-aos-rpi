@@ -58,35 +58,35 @@ common_data:
   common_yocto_sources: &COMMON_YOCTO_SOURCES
     - type: git
       url: "https://git.yoctoproject.org/poky"
-      rev: "00e6a3df8c68146aa98b724426227bda332bcf02"
+      rev: "wrynose"
 
     - type: git
       url: "https://git.openembedded.org/meta-openembedded"
-      rev: "bec755063a8b5da65df626f5749496aadaa4f4bb"
+      rev: "wrynose"
 
     - type: git
       url: "https://git.yoctoproject.org/meta-virtualization"
-      rev: "f980aefbc8b3eeafb8d144e7fdac3c3b701a4fea"
+      rev: "wrynose"
 
     - type: git
       url: "https://git.yoctoproject.org/meta-security"
-      rev: "b13f1705d723650de61277670c8a76aadea4cfdd"
+      rev: "wrynose"
 
     - type: git
       url: "https://git.yoctoproject.org/meta-selinux"
-      rev: "48f745109a1ecea9afe2a74d41dbd90fa7b370af"
+      rev: "wrynose"
 
     - type: git
-      url: "https://github.com/xen-troops/meta-xt-common.git"
-      rev: "v0.3.0"
+      url: "https://github.com/drozd-svtln/meta-xt-common.git"
+      rev: "wrynose"
 
     - type: git
-      url: "https://github.com/aosedge/meta-aos"
-      rev: "v9.1.2"
+      url: "https://github.com/drozd-svtln/meta-aos.git"
+      rev: "wrynose"
 
     - type: git
-      url: "https://github.com/aosedge/meta-aos-rpi.git"
-      rev: "v2.1.2"
+      url: "https://github.com/drozd-svtln/meta-aos-rpi.git"
+      rev: "wrynose"
 
   common_conf: &COMMON_CONF
     - [SSTATE_DIR, "${TOPDIR}/../../../common_data/sstate"]
@@ -137,7 +137,7 @@ common_data:
     - "../meta-aos-rpi/meta-aos-rpi-domd-common"
 
   common_dom_conf: &COMMON_DOM_CONF # Make logs persistent
-    - [VOLATILE_LOG_DIR, "no"]
+    - [FILESYSTEM_PERMS_TABLES:remove, "files/fs-perms-volatile-log.txt"]
 
     # Generate ext4 image files
     - [IMAGE_FSTYPES:append, " ext4"]
